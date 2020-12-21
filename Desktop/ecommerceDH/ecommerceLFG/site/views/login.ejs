@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs')%>
+<title>Login</title>
+
+<body class="fondo">
+
+    <%- include('./partials/header.ejs')%>
+
+    <!--INICIAR SESION-->
+    <div class="container-fluid">
+
+        <form action="/user/" method="post" class="formLogin">
+            <div class="inicio-sesion row">
+
+                <div class="formulario-body col-sm-8 col-md-6 col-lg-4 mx-auto">
+
+                    <div class="titulo text-center">
+                        <p>INICIAR SESION</p>
+                    </div>
+
+                    <div class="formulario-email">
+
+
+                        <input type="email" id="email" name="email" class="form-control"
+                            placeholder="Ingresa tu correo electronico" autofocus>
+                        <br>
+                    </div>
+                    <div class="formulario-contraseña">
+
+
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Contraseña" autofocus>
+
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-3" style="font-size: small ;">
+                        <input type="checkbox" class="custom-control-input" id="recordame" name="recordame">
+                        <label class="custom-control-label" for="recordame">Recordar Contraseña</label>
+                    </div>
+                    <section class="validacionLogin">
+                        <% if (typeof errors != 'undefined') { %>
+                        <p><%= errors%></p>
+
+                        <% } %>
+                    </section>
+
+                    <%- include('./partials/recuperarContrasena.ejs')%>
+
+                    <div>
+                        <button class="boton-ingresar text-center" type="submit"> INGRESAR </button></div>
+
+
+                    <div class="registrarse text-center">¿No tenes una cuenta? <a style="text-decoration: none;"
+                            href="../user/register"> Haz click
+                            aquí</a></div>
+                </div>
+
+            </div>
+
+        </form>
+
+
+    </div>
+
+    <!--footer-->
+
+    <%- include('./partials/footer.ejs')%>
+
+    <%- include('./partials/comunicacion.ejs')%>
+    </div>
+    <!--ScripDeBoostrapt-->
+    <%- include('./partials/scripts.ejs')%>
+
+    <script src="../js/validacionLogin.js"></script>
+    <script src="/js/mostrarCarrito.js"></script>
+    <script src="/js/carrito.js"></script>
+    <script src="/js/compra.js"></script>
+</body>
+
+</html>

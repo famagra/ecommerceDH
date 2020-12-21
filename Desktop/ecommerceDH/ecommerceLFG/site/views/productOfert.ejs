@@ -1,0 +1,83 @@
+<html lang="en">
+
+<%- include('./partials/head.ejs')%>
+<title>Nuestras Ofertas</title>
+
+<body class="fondo">
+    <!--barra de navegacion-->
+    <%- include('./partials/header.ejs')%>
+    <!--carrousel-->
+    <%- include('./partials/carrousel.ejs')%>
+
+    <!--PRINCIPAL-->
+
+    <div class="container">
+        <main class="main">
+            <!--Titulo y servicios-->
+            <div class="container mt-4 text-center">
+                <h1> Nuestra tienda</h1>
+
+                <!--FILTROS-->
+                <%- include('./partials/barraDeBusqueda.ejs')%>
+
+                <!--TODOS LOS PRODUCTOS-->
+                <p style="text-align:initial;">Todos Los Productos</p>
+                <div class="row">
+
+                    <% productos.forEach(producto => { %>
+
+                    <div class="col-12 col-md-4 col-lg-3">
+                        <div class="card shadow-lg p-1 mb-5 bg-white rounded">
+                            <div class="card-body ">
+                                <img src="/images/product/<%= producto.foto  %> " class="d-block w-100" alt="...">
+                                <h5 class="card-title"><%= producto.nombre  %></h5>
+                                <h5 style="text-align: left; font-size: smaller;">18 cuotas sin interés de:</h5>
+                                <h4 style="text-align: left; font-size: smaller; font-size: large; color:cadetblue;">
+                                    $<%= (producto.precio / 18).toFixed(0)%></h4>
+                                <h5 style="text-align: left; font-size: smaller;">o 1 pago de
+                                    <%= producto.precio  %></h5>
+                                <p>
+                                    <a href="#" style="font-size: x-small;" data-toggle="modal"
+                                        data-target="#exampleModal">Ver financiación</a>
+
+                                    <!-- Modal -->
+                                    <%- include('./partials/modalFinanciacion.ejs')%>
+
+                                </p>
+                                <a href="/product/detail/<%=producto.id%>" class="btn btn-primary">Ver detalles</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <% }) %>
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <!--esta parte es la de imagenes de seguimiento tarjeta y otras-->
+
+            <%- include('./partials/preFooter.ejs')%>
+
+        </main>
+    </div>
+    <!--footer-->
+
+    <%- include('./partials/footer.ejs')%>
+
+    <%- include('./partials/scripts.ejs')%>
+    <%- include('./partials/comunicacion.ejs')%>
+
+
+    <script src="/js/mostrarCarrito.js"></script>
+    <script src="/js/carrito.js"></script>
+    <script src="/js/compra.js"></script>
+</body>
+
+</html>

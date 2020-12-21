@@ -1,0 +1,129 @@
+<html lang="en">
+
+<%- include('./partials/head.ejs')%>
+<title>Editar Product</title>
+
+<body class="fondo">
+
+  <!--barra de navegacion-->
+  <%- include('./partials/header.ejs')%>
+
+  <!--PRINCIPAL-->
+  <main class="main">
+    <div class="container cuadroProducto">
+      <div class="row">
+
+        <!--carga imagen-->
+        <div class="col-md-6 order-md-1 mb-4">
+
+          <img src="/images/product/<%=producto.foto%>" class="imgProducto" alt="...">
+
+        </div>
+
+        <!--formulario de modificacion-->
+        <div class="col-md-6 order-md-2">
+          <h4 class="mb-3">Vas a Modificar el Producto</h4>
+
+
+          <form action="/product/edit/<%=producto.id%>?_method=PUT" method="POST">
+
+            <input type="text" class="form-control" id="nombre" name="nombre" value="<%=producto.nombre%>">
+            <!--Precio-Cuotas-Stock-->
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" id="precio" name="precio" value="<%=producto.precio%>">
+                <div class="invalid-feedback">
+                  <%=producto.precio%>
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cuotas">Cuotas</label>
+                <select class="custom-select d-block w-100" id="cuota" name="cuota">
+                  <option value="">Elegir</option>
+                  <option value="1">Sin Cuotas</option>
+                  <option value="2">1</option>
+                  <option value="3">3</option>
+                  <option value="4">6</option>
+                  <option value="5">12</option>
+                  <option value="6">18</option>
+                </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar 1 opción.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="stock">Stock</label>
+                <input type="text" class="form-control" id="stock" name="stock" placeholder="Ingrese un numero"
+                  value="<%=producto.stock%>">
+
+                <div class="invalid-feedback">
+                  Debes seleccionar 1 opción.
+                </div>
+              </div>
+              <br />
+              <div class="col-md-3 mb-3">
+                <label for="color">color</label>
+                <select class="custom-select d-block w-100" id="color" name="color">
+                  <option value=""><%=producto.color.nombre%></option>
+                  <option value="">Elegir</option>
+                  <option value="1">blanco</option>
+                  <option value="2">negro</var></option>
+                  <option value="3">rojo</option>
+                  <option value="4">azul</option>
+                  <option value="5">celeste</option>
+                </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar 1 opción.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="categoria">categoria</label>
+                <select class="custom-select d-block w-100" id="categoria" name="categoria">
+                  <option><%=producto.categoria.descripcion%></option>
+                  <option value="1">Oferta</option>
+                  <option value="2">Destacado</option>
+                  <option value="3">Nuevo</option>
+                  <option value="4">Baja</option>
+                </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar 1 opción.
+                </div>
+              </div>
+            </div>
+            <label for="descripcion">Descripción del Producto</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3"><%=producto.descripcion%>
+            </textarea>
+            <!--linea separacion-->
+            <hr class="mb-4">
+
+            <input type="file" id="avatar" name="avatar" accept="image/x-png,image/gif,image/jpeg" />
+            <br>
+            <!--Boton-->
+            <br>
+            <button class="btn-carga btn-sm btn-block" type="submit">Guardar y Publicar</button>
+
+          </form>
+          <form action="/product/edit/<%=producto.id%>?_method=DELETE" method="POST">
+            <button class="btn-carga btn-sm btn-block btn btn-danger" type="submit">ELIMINAR PRODUCTO</button>
+          </form>
+
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--footer-->
+
+  <%- include('./partials/footer.ejs')%>
+
+
+
+  <%- include('./partials/scripts.ejs')%>
+  <script src="/js/mostrarCarrito.js"></script>
+  <script src="/js/carrito.js"></script>
+  <script src="/js/compra.js"></script>
+</body>
+
+</html>

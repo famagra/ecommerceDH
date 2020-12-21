@@ -1,0 +1,123 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-light bg-light" style="border-bottom: 1px solid gray;">
+        <!--agregué borde-->
+
+        <a class="navbar-brand" href="/">LOGO</a> </a>
+
+        <button class="navbar-toggler ml-auto collapsed" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto text-center">
+                <!--home-->
+                <li class="nav-item active">
+                    <a class="nav-link " href="/">Home <span class="sr-only"></span></a>
+                </li>
+                <!--Catalogo-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tienda
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/product/">Todos Los Productos</a>
+                        <a class="dropdown-item disabled" href="/product/destacados">Destacados</a>
+                        <a class="dropdown-item" href="/product/ofertas">Ofertas</a>
+                    </div>
+                </li>
+                <!--Soporte-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Soporte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Cotiza online</a>
+                        <a class="dropdown-item" href="#">Seguimiento</a>
+                    </div>
+                </li>
+                <!--Nosotros-->
+                <li class="nav-item">
+                    <a class="nav-link" href="/product/nosotros">Quienes Somos</a>
+                </li>
+
+
+                <!--Login
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/product/create">Crear Producto</a>
+                        <a class="dropdown-item" href="/product/list">Listado de Productos</a>
+                        <a class="dropdown-item" href="/user/list">Listado de Usuarios</a>
+                    </div>
+                    -->
+                </li>
+            </ul>
+            <!--Login-->
+
+
+            <ul class="navbar-nav mr text-center">
+
+
+                <% if (usuario != null) { %>
+
+                <li class="nav-item dropdown">
+                    <a a class="nav-link dropdown-toggle text-uppercase" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        href=""><%= usuario.nombre %></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/user">Mi Perfil</a>
+                        <form action="/user/logout">
+                            <button class="btn-carga btn-sm btn-block btn btn-danger" type="submit">Cerrar
+                                Sesión</button>
+                        </form>
+                    </div>
+                </li>
+
+                <% } %>
+
+                <% if (usuario == null) { %>
+                <li class="nav-item userLogin">
+                    <a class="nav-link" href="/user">LOG IN</a>
+                </li>
+
+                <% } %>
+
+
+
+                <li class="nav-item submenu itemCarro">
+                    <a class="nav-link" href="#">CART ( )</a>
+                    <div id="carrito">
+                        <table id="lista-carrito" class="u-full-width">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                        <a href="#" id="vaciar-carrito" class="btn-danger btn-xs d-flex flex-row">Vaciar
+                            Compra</a><br>
+                        <a href="/product/cart" id="check-out" class="btn-primary btn-xs d-flex flex-row">Ver
+                            Compra</a>
+                    </div>
+                </li>
+
+
+
+        </div>
+    </nav>
+
+</header>

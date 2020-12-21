@@ -1,0 +1,141 @@
+<html lang="en">
+
+<%- include('./partials/head.ejs')%>
+<title>Agregar Producto</title>
+
+<body class="fondo">
+
+  <!--barra de navegacion-->
+  <%- include('./partials/header.ejs')%>
+
+  <!--PRINCIPAL-->
+  <main class="main">
+    <div class="container cuadroProducto">
+      <div class="row">
+
+        <!--carga imagen-->
+        <div class="col-md-6 order-md-1 mb-4">
+
+          <img src="/images/product/demo.webp" class="imgProducto" alt="imagenDemo">
+
+        </div>
+
+        <!--formulario carga-->
+        <div class="col-md-6 order-md-2">
+          <h4 class="mb-3">Crear Nuevo Producto</h4>
+          <form action="/product/create" method="POST" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-md-12  mb-3">
+                <label for="name">Producto</label>
+                <input type="text" class="form-control" id="name" name="nombre" placeholder="Nombre del Producto"
+                  required>
+                <div class="invalid-feedback">
+                  Campo requerido
+                </div>
+              </div>
+              <div class="col-md-12 mb-3">
+                <label for="marca">Marca</label>
+                <select class="custom-select d-block w-100" id="marca" name="marca" required>
+                  <option value="">Seleccionar</option>
+                  <option value="1">LG</option>
+                  <option value="2">SAMSUMG</option>
+                  <option value="3">MOTOROLA</option>
+                  <option value="4">NOKIA</option>
+                </select>
+                <div class="invalid-feedback">
+                  Seleccionar una marca
+                </div>
+              </div>
+            </div>
+
+            <!--Precio-Cuotas-Stock-->
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" id="precio" name="precio" required>
+                <div class="invalid-feedback">
+                  Ingresar el precio total
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="cuotas">Cuotas</label>
+                <select class="custom-select d-block w-100" id="cuota" name="cuota" required>
+                  <option value="">Elegir</option>
+                  <option value="2">1</option>
+                  <option value="3">3</option>
+                  <option value="4">6</option>
+                  <option value="5">12</option>
+                  <option value="6">18</option>
+                </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar 1 opción.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="stock">Stock</label>
+                <input type="text" class="form-control" id="stock" name="stock" placeholder="Ingrese un numero"
+                  required>
+                <div class="invalid-feedback">
+                  Debes seleccionar 1 opción.
+                </div>
+              </div>
+              <br />
+              <div class="col-md-3 mb-3">
+                <label for="color">color</label>
+                <select class="custom-select d-block w-100" id="color" name="color" required>
+                  <option value="">Elegir</option>
+                  <option value="1">BLANCO </option>
+                  <option value="2">NEGRO</var></option>
+                  <option value="3">OTRO</option>
+                </select>
+                <div class="invalid-feedback">
+                  Debes seleccionar 1 opción.
+                </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="categoria">categoria</label>
+
+                <select class="custom-select d-block w-100" id="categoria" name="categoria" required>
+                  <% for( let i = 0; i < categorias.length; i++ ) { %>
+                  <option value="<%= categorias[i].id %> ">
+                    <%= categorias[i].descripcion %>
+                  </option>
+                  <% } %>
+                </select>
+
+
+                <div class="invalid-feedback">
+                  Debes seleccionar 1 opción.
+                </div>
+              </div>
+            </div>
+            <label for="descripcion">Descripción del Producto</label>
+            <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+            <!--linea separacion-->
+            <hr class="mb-4">
+
+            <input type="file" id="imagen-producto" name="imagen-producto" accept="image/x-png,image/gif,image/jpeg" />
+            <br>
+            <!--Boton-->
+            <br>
+            <button class="btn-carga btn-sm btn-block" type="submit">Guardar y Publicar</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!--footer-->
+
+  <%- include('./partials/footer.ejs')%>
+
+
+
+  <%- include('./partials/scripts.ejs')%>
+  <script src="/js/mostrarCarrito.js"></script>
+  <script src="/js/carrito.js"></script>
+  <script src="/js/compra.js"></script>
+</body>
+
+</html>
